@@ -1,0 +1,284 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { translations, experience, projects, skills, partners } from '../../data/portfolio.ts';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ja' } },
+    { params: { lang: 'zh' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = translations[lang] || translations['en'];
+---
+
+<Layout title={lang === 'zh' ? "樊立德 - 资深全栈工程师" : lang === 'ja' ? "樊 立徳 - フロントエンドエンジニア" : "Fan Lide - Full Stack Innovator"}>
+  <main class="min-h-screen bg-[#0a0a0a] text-white selection:bg-purple-500 selection:text-white pb-20 font-sans">
+    
+    <!-- Language Switcher -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-sm bg-black/20">
+       <a href={`/${lang}`} class="text-xl font-bold tracking-tighter text-white hover:text-gray-300 transition-colors">FL.</a>
+       <div class="flex gap-4 text-sm font-medium">
+         <a href="/en" class={`transition-colors hover:text-white ${lang === 'en' ? 'text-white border-b border-white' : 'text-gray-500'}`}>EN</a>
+         <a href="/ja" class={`transition-colors hover:text-white ${lang === 'ja' ? 'text-white border-b border-white' : 'text-gray-500'}`}>JA</a>
+         <a href="/zh" class={`transition-colors hover:text-white ${lang === 'zh' ? 'text-white border-b border-white' : 'text-gray-500'}`}>ZH</a>
+       </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-[90vh] flex flex-col items-center justify-center p-8 text-center relative overflow-hidden">
+      <!-- Background Effect -->
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/30 via-[#0a0a0a] to-[#0a0a0a]"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
+        <!-- Animated Particles/Glow (Simulated with CSS) -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[128px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px] animate-pulse delay-1000"></div>
+      </div>
+      
+      <div class="space-y-8 animate-in fade-in zoom-in duration-1000 slide-in-from-bottom-10 fill-mode-both z-10 relative max-w-4xl mx-auto">
+        
+        <div class="inline-block mb-4">
+             <span class="py-1 px-3 rounded-full bg-white/10 border border-white/20 text-xs text-blue-200 tracking-wider uppercase font-semibold backdrop-blur-md">
+               Available for freelance & collaboration
+             </span>
+        </div>
+
+        <h1 class="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent pb-4 drop-shadow-2xl">
+          {t.hero.title}
+        </h1>
+        
+        <p class="text-xl md:text-3xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed tracking-wide">
+          {t.hero.subtitle}
+        </p>
+
+        <p class="text-base text-gray-500 mt-2 block max-w-xl mx-auto border-t border-gray-800 pt-6">
+           {t.hero.desc}
+        </p>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-6 pt-10">
+          <a href="#projects" class="group relative px-8 py-4 bg-white text-black font-bold rounded-full overflow-hidden transition-all transform hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]">
+            <span class="relative z-10">{t.hero.cta_projects}</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-100 to-white group-hover:from-gray-200 group-hover:to-gray-100 transition-colors"></div>
+          </a>
+          <a href="#contact" class="px-8 py-4 border border-gray-700 text-gray-300 font-bold rounded-full hover:border-white hover:text-white transition-all backdrop-blur-sm bg-black/30">
+            {t.hero.cta_contact}
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 space-y-40 z-10 relative">
+      
+      <!-- Experience Section -->
+      <section id="experience" class="scroll-mt-32">
+        <div class="flex flex-col md:flex-row gap-12">
+            <div class="md:w-1/3">
+                <h2 class="text-4xl font-bold text-white mb-6 sticky top-32">{t.sections.experience}</h2>
+            </div>
+            <div class="md:w-2/3 space-y-16 border-l border-gray-800 ml-3 pl-8 relative">
+              {experience.map((job, index) => (
+                <div class="relative group">
+                  <span class="absolute -left-[39px] top-2 h-4 w-4 rounded-full border-2 border-[#0a0a0a] bg-gray-600 group-hover:bg-blue-500 group-hover:scale-125 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
+                  
+                  <div class="transform group-hover:translate-x-2 transition-transform duration-300">
+                      <span class="text-sm font-mono text-blue-400 mb-2 block">{job.period}</span>
+                      <h3 class="text-2xl font-bold text-white mb-1">
+                        {lang === 'ja' && job.company_ja ? job.company_ja : lang === 'zh' && job.company_zh ? job.company_zh : job.company}
+                      </h3>
+                      <p class="text-lg text-gray-300 mb-4 font-medium">{job.role}</p>
+                      <p class="text-gray-400 leading-relaxed mb-6 text-base max-w-2xl">
+                        {typeof job.description === 'string' ? job.description : job.description[lang] || job.description['en']}
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        {job.tech.map((t) => (
+                          <span class="px-3 py-1 bg-white/5 border border-white/10 text-xs text-gray-300 rounded-full hover:bg-white/10 transition-colors">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="scroll-mt-32">
+         <div class="mb-16">
+            <h2 class="text-4xl font-bold text-white mb-4">{t.sections.projects}</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+         </div>
+         
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <a href={project.link} target="_blank" class="group block bg-[#111] rounded-3xl overflow-hidden hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] transition-all hover:-translate-y-2 border border-white/5 hover:border-white/10">
+              
+              <!-- Project Image -->
+              <div class="h-64 overflow-hidden relative">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-500 z-10"></div>
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div class="absolute bottom-4 left-4 z-20">
+                    <span class="text-xs font-bold px-3 py-1 bg-black/80 text-white rounded-full backdrop-blur-md border border-white/10 uppercase tracking-widest">
+                        {project.status}
+                    </span>
+                </div>
+              </div>
+
+              <div class="p-8">
+                <div class="flex justify-between items-center mb-4">
+                  <h3 class="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 group-hover:text-white transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </div>
+                <p class="text-gray-400 mb-8 line-clamp-3 leading-relaxed">
+                  {typeof project.description === 'string' ? project.description : project.description[lang] || project.description['en']}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {project.tech.slice(0, 3).map((t) => (
+                    <span class="text-xs font-medium text-gray-500 bg-gray-900 px-2 py-1 rounded border border-gray-800">#{t}</span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-white mb-4">{t.sections.skills}</h2>
+            <p class="text-gray-400">Tools and technologies I use to bring ideas to life.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div class="p-8 bg-gradient-to-b from-gray-900 to-black rounded-3xl border border-white/5 hover:border-green-500/30 transition-all group">
+            <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-3">
+              <span class="p-2 bg-green-500/10 rounded-lg text-green-400 group-hover:text-green-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+              </span>
+              Frontend
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              {skills.frontend.map(skill => (
+                <span class="px-4 py-2 bg-black text-sm font-medium text-gray-300 rounded-lg border border-gray-800 group-hover:border-green-900/50 transition-colors">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="p-8 bg-gradient-to-b from-gray-900 to-black rounded-3xl border border-white/5 hover:border-blue-500/30 transition-all group">
+            <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-3">
+              <span class="p-2 bg-blue-500/10 rounded-lg text-blue-400 group-hover:text-blue-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>
+              </span>
+              Backend
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              {skills.backend.map(skill => (
+                <span class="px-4 py-2 bg-black text-sm font-medium text-gray-300 rounded-lg border border-gray-800 group-hover:border-blue-900/50 transition-colors">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="p-8 bg-gradient-to-b from-gray-900 to-black rounded-3xl border border-white/5 hover:border-orange-500/30 transition-all group">
+            <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-3">
+              <span class="p-2 bg-orange-500/10 rounded-lg text-orange-400 group-hover:text-orange-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+              </span>
+              Tools & Cloud
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              {skills.tools.map(skill => (
+                <span class="px-4 py-2 bg-black text-sm font-medium text-gray-300 rounded-lg border border-gray-800 group-hover:border-orange-900/50 transition-colors">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Partners Section -->
+      {partners && partners.length > 0 && (
+      <section id="partners">
+        <div class="mb-16">
+            <h2 class="text-4xl font-bold text-white mb-4">{t.sections.partners}</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-green-500 to-teal-500 rounded-full"></div>
+            <p class="text-gray-400 mt-4 max-w-2xl">
+              Collaborating with elite experts to deliver enterprise-grade solutions across all domains.
+            </p>
+         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {partners.map((partner) => (
+             <div class="p-8 bg-white/5 border border-white/10 rounded-3xl flex flex-col md:flex-row gap-6 items-start hover:bg-white/10 transition-colors group">
+                <div class="flex-shrink-0">
+                  <img 
+                    src={partner.avatar} 
+                    alt={partner.name}
+                    class="w-20 h-20 rounded-full bg-gray-800 p-1 border-2 border-transparent group-hover:border-green-400 transition-colors"
+                  />
+                </div>
+                <div>
+                   <h3 class="text-xl font-bold text-white mb-1 group-hover:text-green-400 transition-colors">
+                      {lang === 'ja' && partner.name_ja ? partner.name_ja : lang === 'zh' && partner.name_zh ? partner.name_zh : partner.name}
+                   </h3>
+                   <p class="text-sm font-medium text-gray-400 uppercase tracking-wider mb-3">
+                      {typeof partner.role === 'string' ? partner.role : partner.role[lang] || partner.role['en']}
+                   </p>
+                   <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                      {typeof partner.bio === 'string' ? partner.bio : partner.bio[lang] || partner.bio['en']}
+                   </p>
+                   <div class="flex flex-wrap gap-2">
+                      {partner.tech.map(t => (
+                        <span class="text-xs px-2 py-0.5 rounded bg-black/30 text-gray-400 border border-white/5">{t}</span>
+                      ))}
+                   </div>
+                </div>
+             </div>
+          ))}
+        </div>
+      </section>
+      )}
+
+      <!-- Contact / Footer -->
+      <footer id="contact" class="py-32 border-t border-gray-900 text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-gray-900/50 via-[#0a0a0a] to-[#0a0a0a] z-0"></div>
+          
+          <div class="relative z-10">
+            <h2 class="text-5xl font-bold text-white mb-8">{t.sections.contact}</h2>
+            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+                {t.sections.contact_desc || "Ready to take your digital presence to the next level? Let's discuss your next big project."}
+            </p>
+            <div class="flex justify-center gap-8 mb-16">
+            <a href="mailto:lidefan13@gmail.com" class="text-xl text-gray-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1">Email: lidefan13@gmail.com</a>
+            <a href="https://github.com/FanLide" target="_blank" class="text-xl text-gray-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1">GitHub</a>
+            <a href="https://t.me/lidefan13" target="_blank" class="text-xl text-gray-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1">Telegram</a>
+            </div>
+            <p class="text-gray-600 text-sm">
+            &copy; {new Date().getFullYear()} Fan Lide. All rights reserved.
+            </p>
+          </div>
+      </footer>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
