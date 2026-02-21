@@ -114,6 +114,18 @@ export const experience = [
 
 export const projects = [
   {
+    title: "Aurora 占卜",
+    description: {
+      en: "AI-powered fortune telling web app with omikuji, tarot, horoscope, name analysis & palm reading. Supports 7 languages.",
+      ja: "AI搭載の占卜ウェブアプリ。おみくじ、タロット、星座占、姓名判断、手相占いをサポート。7言語対応。",
+      zh: "AI驱动的占卜网页应用，支持求签、塔罗牌、星座、姓名判断、手相占卜。支持7种语言。"
+    },
+    status: "Live",
+    tech: ["Next.js", "TypeScript", "Minimax AI", "Supabase", "PWA"],
+    link: "https://aurora-fortune.com",
+    image: "https://images.unsplash.com/photo-1538370965046-79c0d6907d47?auto=format&fit=crop&q=80&w=800"
+  },
+  {
     title: "OrderApp (SaaS)",
     description: {
       en: "A B2B Online Ordering System connecting restaurants and suppliers. Full-stack implementation.",
