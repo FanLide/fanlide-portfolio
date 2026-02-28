@@ -138,6 +138,7 @@ npx wrangler deploy    # 推送到 Cloudflare Workers
 
 对我们的服务感兴趣？欢迎联系！
 
+- **网站**: [chihiroshoji.com](https://chihiroshoji.com)
 - **邮箱**: [lidefan13@gmail.com](mailto:lidefan13@gmail.com)
 - **GitHub**: [github.com/FanLide](https://github.com/FanLide)
 - **Telegram**: [t.me/lidefan13](https://t.me/lidefan13)
