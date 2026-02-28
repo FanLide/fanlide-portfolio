@@ -122,7 +122,7 @@ export const projects = [
     },
     status: "Live",
     tech: ["Next.js", "TypeScript", "Minimax AI", "Supabase", "PWA"],
-    link: "https://aurora-fortune.com",
+    link: "https://aurora-virid-five.vercel.app/",
     image: "https://images.unsplash.com/photo-1538370965046-79c0d6907d47?auto=format&fit=crop&q=80&w=800"
   },
   {

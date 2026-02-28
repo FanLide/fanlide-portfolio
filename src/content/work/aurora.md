@@ -36,5 +36,5 @@ tags:
 
 ## 関連リンク
 
-- [Aurora 占卜](https://aurora-fortune.com) - ライブデモ
+- [Aurora 占卜](https://aurora-virid-five.vercel.app/) - ライブデモ
 - [ソースコード](https://github.com/fanlide/aurora) - GitHub
