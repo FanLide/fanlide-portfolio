@@ -1,30 +1,152 @@
-# Astro Starter Kit: Portfolio
+# Petter Fan Studio - 个人作品集
 
-```sh
-npm create astro@latest -- --template portfolio
+![Petter Fan Studio](https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200)
+
+**樊氏工作室** - 连接中日技术生态的精英全栈开发团队
+
+## 🌟 项目概述
+
+这是一个现代化的个人作品集网站，展示 **Petter Fan Studio** 的核心能力、精选项目和专业团队。网站采用多语言支持（中文、日文、英文），专为跨国技术合作而设计。
+
+### 核心特色
+
+- **多语言国际化**: 完美支持中文、日文、英文三种语言
+- **高性能静态生成**: 基于 Astro 构建，极致性能优化
+- **响应式设计**: 在所有设备上都能完美展现
+- **现代化技术栈**: React + TypeScript + TailwindCSS
+- **云原生部署**: 通过 Cloudflare Workers 实现全球边缘计算加速
+
+## 🚀 功能亮点
+
+### 1. 核心竞争力展示
+- **资深专家团队**: 每位成员拥有10+年实战经验
+- **企业级解决方案**: 专注于日本市场的系统开发与现代化改造
+- **金融科技专长**: 高并发支付系统与金融基础设施
+
+### 2. 精选项目案例
+- **Aurora 占卜**: AI驱动的多语言占卜应用 (7种语言支持)
+- **OrderApp (SaaS)**: B2B在线订货系统，连接餐厅与供应商
+- **Japan Market Monitor**: 实时市场分析工具，Telegram自动通知
+- **Petter Fan Studio**: 本作品集网站本身
+
+### 3. 技术栈展示
+- **前端**: React, Vue.js, Angular, TypeScript, TailwindCSS, Next.js
+- **后端**: Node.js, NestJS, Java, Spring Boot, Go, Redis
+- **工具链**: Git, Docker, AWS, Cloudflare, Kubernetes, Figma
+
+### 4. 团队介绍
+展示由5位资深专家组成的精英团队：
+- **Petter Fan** - 创始人 & 技术负责人
+- **Alex Wang** - 资深后端架构师  
+- **David Yang** - 移动端开发专家
+- **Sarah Li** - UI/UX 设计总监
+- **Mike Chen** - 质量保障与运维专家
+
+## 🛠 技术架构
+
+### 主要技术栈
+- **框架**: [Astro 5](https://astro.build) - 静态站点生成器
+- **UI库**: [React 19](https://react.dev) - 组件化开发
+- **样式**: [TailwindCSS 4](https://tailwindcss.com) - 原子化CSS
+- **部署**: [Cloudflare Workers](https://workers.cloudflare.com) - 全球边缘 SSR
+- **语言**: TypeScript - 类型安全
+
+### 项目结构
+```
+src/
+├── components/     # 可复用的UI组件
+├── content/        # 内容文件 (Markdown)
+├── data/           # 项目数据 (portfolio.ts)
+├── layouts/        # 页面布局
+├── pages/          # 路由页面
+└── styles/         # 全局样式
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/portfolio/devcontainer.json)
+## 📦 快速开始
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### 先决条件
+- Node.js 18+
+- npm 或 yarn
 
-![portfolio](https://user-images.githubusercontent.com/357379/210779178-a98f0fb7-6b1a-4068-894c-8e1403e26654.jpg)
+### 安装依赖
+```bash
+npm install
+```
 
-## 🧞 Commands
+### 本地开发
+```bash
+npm run dev
+```
+访问 `http://localhost:4321` 查看开发版本
 
-All commands are run from the root of the project, from a terminal:
+### 构建生产版本
+```bash
+npm run build
+```
+构建产物将输出到 `./dist/` 目录
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### 预览生产版本
+```bash
+npm run preview
+```
 
-## 👀 Want to learn more?
+## 🌍 多语言支持
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+网站支持三种语言，通过URL路径切换：
+- **英文**: `/en`
+- **日文**: `/ja`
+- **中文**: `/zh`
+
+语言切换基于 Astro 的动态路由功能实现。
+
+## 🚀 部署
+
+### Cloudflare Workers（SSR 模式）
+
+项目使用 `@astrojs/cloudflare` adapter，通过 **Cloudflare Workers** 部署：
+
+```bash
+npm run build          # 生成 dist/_worker.js
+npx wrangler deploy    # 推送到 Cloudflare Workers
+```
+
+部署配置见 `wrangler.jsonc`，兼容性日期 `2026-02-21`，已启用 `nodejs_compat`。
+
+## 💼 商业合作
+
+我们提供以下服务：
+
+### 企业级解决方案
+- 大型系统架构设计与开发
+- 遗留系统现代化改造
+- 高并发支付网关开发
+- 跨国技术团队协作
+
+### 技术专长领域
+- **前端**: React/Vue 全栈开发，PWA 应用
+- **后端**: 微服务架构，高可用系统设计
+- **移动端**: iOS/Android 原生及跨平台开发
+- **DevOps**: CI/CD 流水线，云基础设施管理
+
+### 合作模式
+- 项目外包开发
+- 长期技术顾问
+- 全职/兼职职位
+- 技术培训与咨询
+
+## 📞 联系方式
+
+对我们的服务感兴趣？欢迎联系！
+
+- **邮箱**: [lidefan13@gmail.com](mailto:lidefan13@gmail.com)
+- **GitHub**: [github.com/FanLide](https://github.com/FanLide)
+- **Telegram**: [t.me/lidefan13](https://t.me/lidefan13)
+- **Aurora 演示**: [aurora-virid-five.vercel.app](https://aurora-virid-five.vercel.app/)
+
+## 📄 许可证
+
+本项目基于 MIT 许可证开源，但网站内容和商业服务受版权保护。
+
+---
+
+**Petter Fan Studio** - 用技术连接世界，用专业创造价值 🌏✨
